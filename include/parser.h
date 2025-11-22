@@ -28,11 +28,11 @@ void term();
 void term_L();
 void factor();
 
-/*Funções auxiliares
+//Funções auxiliares
 void LE_TOKEN();
-void ERRO(int numero_erro);*/
+void ERRO(int numero_erro);
 
-/* Variável global para o token atual
-extern Token token_atual;*/
+// Variável global para o token atual
+extern Token token_atual;
 
 #endif
