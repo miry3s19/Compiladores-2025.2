@@ -30,7 +30,7 @@ void factor();
 
 //Funções auxiliares
 void LE_TOKEN();
-void ERRO(int numero_erro);
+void ERRO();
 
 // Variável global para o token atual
 extern Token token_atual;
