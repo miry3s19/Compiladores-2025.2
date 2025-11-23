@@ -10,8 +10,41 @@ void LE_TOKEN() {
 }
 
 // Erros
-void ERRO() {
-    printf("ERRO");
+void ERRO(int numero_erro) {
+    printf("ERRO SINTÁTICO %d: ", numero_erro);
+	switch(numero_erro) {
+		case 1: 
+			printf("O programa deve começar com a palavra 'início' e terminar com a palavra 'fim'. \n");
+			break;
+		case 2:
+			printf("Caractere ';' esperado. \n");
+			break;
+		case 3:
+			printf("Identificador era esperado. \n");
+			break;
+		case 4:
+			printf("O tipo era esperado. \n");
+			break;
+		case 5:
+			printf("Um comando válido para a liguagem era esperado.\n");
+			break;
+		case 6:
+			printf("Caractere '(' ou '=' esperados. \n");
+			break;
+		case 7:
+			printf("Caractere '=' era esperado. \n");
+			break;
+		case 8:
+			printf("Parênteses foram abertos ou fechados incorretamente. \n");
+			break;
+		case 9:
+			printf("Colchetes foram abertos ou fechados incorretamente. \n");
+			break;
+		default: 
+			printf("Erro sintático\n"); 
+			break;
+	}
+	exit(numero_erro);
 }
 
 void programa() {
@@ -22,10 +55,10 @@ void programa() {
         if(token_atual.nome_token == END) {
             LE_TOKEN();
         } else { 
-            ERRO();
+            ERRO(1);
         }
     } else {
-        ERRO();
+        ERRO(1);
     }
 }
 
@@ -48,10 +81,10 @@ void decl() {
         if(token_atual.nome_token == SEMICOLON) {
             LE_TOKEN();
         } else {
-            ERRO();
+            ERRO(2);
         }
     } else {
-        ERRO();
+        ERRO(3);
     }
 }
 
@@ -61,7 +94,7 @@ void tipo() {
        token_atual.nome_token == TYPE_STRING) {
         LE_TOKEN();
     } else {
-        ERRO();
+        ERRO(4);
     }
 }
 
@@ -83,21 +116,21 @@ void comando() {
         if(token_atual.nome_token == SEMICOLON) {
             LE_TOKEN();
         } else {
-            ERRO();
+            ERRO(2);
         }
     } else if(token_atual.nome_token == READ) {
         entrada();
         if(token_atual.nome_token == SEMICOLON) {
             LE_TOKEN();
         } else {
-            ERRO();
+            ERRO(2);
         }
     } else if(token_atual.nome_token == PRINT) {
         saida();
         if(token_atual.nome_token == SEMICOLON) {
             LE_TOKEN();
         } else {
-            ERRO();
+            ERRO(2);
         }
     } else if(token_atual.nome_token == IF) {
         if_stmt();
@@ -106,7 +139,7 @@ void comando() {
     } else if(token_atual.nome_token == LEFT_BRACKET) {
         bloco();
     } else {
-        ERRO();
+        ERRO(5);
     }
 }
 
@@ -115,7 +148,7 @@ void identificador() {
         LE_TOKEN();
         acao();
     } else {
-        ERRO();
+        ERRO(3);
     }
 }  
 
@@ -125,7 +158,7 @@ void acao() {
     } else if(token_atual.nome_token == LEFT_PARENTHESIS) {
         chamada();
     } else {
-        ERRO();
+        ERRO(6);
     }
 }  
 
@@ -134,7 +167,7 @@ void atribuicao() {
         LE_TOKEN();
         expr();
     } else {
-        ERRO();
+        ERRO(7);
     }
 }  
 
@@ -145,10 +178,10 @@ void chamada() {
         if(token_atual.nome_token == RIGHT_PARENTHESIS) {
             LE_TOKEN();
         } else {
-            ERRO();
+            ERRO(8);
         }
     } else {
-        ERRO();
+        ERRO(8);
     }
 }  
 
@@ -181,16 +214,16 @@ void entrada() {
                 if(token_atual.nome_token == RIGHT_PARENTHESIS) {
                     LE_TOKEN();
                 } else {
-                    ERRO();
+                    ERRO(8);
                 }
             } else {
-                ERRO();
+                ERRO(3);
             } 
         } else {
-            ERRO();
+            ERRO(8);
         }
     } else {
-        ERRO();
+        ERRO(5);
     }
 }  
 
@@ -203,13 +236,13 @@ void saida() {
             if(token_atual.nome_token == RIGHT_PARENTHESIS) {
                 LE_TOKEN();
             } else {
-                ERRO();
+                ERRO(8);
             } 
         } else {
-            ERRO();
+            ERRO(8);
         }
     } else {
-        ERRO();
+        ERRO(5);
     }
 }  
 
@@ -224,13 +257,13 @@ void if_stmt() {
                 comando();
                 else_opt();
             } else {
-                ERRO();
+                ERRO(8);
             }
         } else {
-            ERRO();
+            ERRO(8);
         }
     } else {
-        ERRO();
+        ERRO(5);
     }
 }
 
@@ -253,13 +286,13 @@ void while_stmt() {
                 LE_TOKEN();
                 comando();
             } else {
-                ERRO();
+                ERRO(8);
             } 
         } else {
-            ERRO();
+            ERRO(8);
         }
     } else {
-        ERRO();
+        ERRO(5);
     }
 }  
 
@@ -270,10 +303,10 @@ void bloco() {
         if(token_atual.nome_token == RIGHT_BRACKET) {
             LE_TOKEN();
         } else {
-            ERRO();
+            ERRO(9);
         }
     } else {
-        ERRO();
+        ERRO(9);
     }
 }  
 
@@ -320,12 +353,12 @@ void factor() {
         if(token_atual.nome_token == RIGHT_PARENTHESIS) {
             LE_TOKEN();
         } else {
-            ERRO();
+            ERRO(8);
         }
     } else if(token_atual.nome_token == OP_SUB) {
         LE_TOKEN();
         factor();
     } else {
-        ERRO();
+        ERRO(5);
     }   
 }
