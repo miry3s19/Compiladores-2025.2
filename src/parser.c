@@ -6,7 +6,12 @@
 Token token_atual;
 
 void LE_TOKEN() {
-    token_atual = proximo_token();
+    do {
+        token_atual = proximo_token();
+        // Debug: mostre qual token está sendo lido
+        //printf("DEBUG PARSER: Token lido = %d\n", token_atual.nome_token);
+    } while (token_atual.nome_token == SMALL_COMMENTARY || 
+             token_atual.nome_token == COMMENTARY);
 }
 
 // Erros

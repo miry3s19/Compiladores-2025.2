@@ -12,7 +12,7 @@ int main() {
     
     programa();
     
-    printf("Análise sintática concluída com SUCESSO!\\n");
+    printf("Análise sintática concluída com SUCESSO!\n");
     
     free(code);
     liberar_tabela(&tabela_simbolos);
