@@ -3,7 +3,7 @@ inicio
 
     i = 1;
 
-    read(a); read(b); --lê os valores de a e b
+    read(a); read(b);
 
     while(i){
         if (a + b = 4){
