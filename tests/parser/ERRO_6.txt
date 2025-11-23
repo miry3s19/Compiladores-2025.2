@@ -1,4 +1,5 @@
 inicio
     int x;
-    x + 10;
+    read(x;
+    print(x + 10;
 fim

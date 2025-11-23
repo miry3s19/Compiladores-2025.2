@@ -1,4 +1,4 @@
 inicio
     int x;
-    x = ; 
+    x + 10;
 fim

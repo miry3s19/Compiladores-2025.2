@@ -1,6 +1,0 @@
-inicio
-    int x;
-    {
-        x = 10;
-    ;
-fim

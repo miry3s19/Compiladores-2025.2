@@ -1,4 +1,4 @@
 inicio
-    double x;
-    x = 10;
+    int x;
+    x = ; 
 fim
