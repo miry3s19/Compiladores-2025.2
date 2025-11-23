@@ -37,12 +37,9 @@ void ERRO(int numero_erro) {
 			printf("Caractere '(' ou '=' esperados. \n");
 			break;
 		case 7:
-			printf("Caractere '=' era esperado. \n");
-			break;
-		case 8:
 			printf("Parênteses foram abertos ou fechados incorretamente. \n");
 			break;
-		case 9:
+		case 8:
 			printf("Colchetes foram abertos ou fechados incorretamente. \n");
 			break;
 		default: 
@@ -172,7 +169,7 @@ void atribuicao() {
         LE_TOKEN();
         expr();
     } else {
-        ERRO(7);
+        ERRO(6);
     }
 }  
 
@@ -183,10 +180,10 @@ void chamada() {
         if(token_atual.nome_token == RIGHT_PARENTHESIS) {
             LE_TOKEN();
         } else {
-            ERRO(8);
+            ERRO(7);
         }
     } else {
-        ERRO(8);
+        ERRO(7);
     }
 }  
 
@@ -196,7 +193,7 @@ void args() {
        token_atual.nome_token == OP_SUB) {
         expr_list();
     } else {
-        // ε
+        // ε-produção
         return;
     }
 }
@@ -219,13 +216,13 @@ void entrada() {
                 if(token_atual.nome_token == RIGHT_PARENTHESIS) {
                     LE_TOKEN();
                 } else {
-                    ERRO(8);
+                    ERRO(7);
                 }
             } else {
                 ERRO(3);
             } 
         } else {
-            ERRO(8);
+            ERRO(7);
         }
     } else {
         ERRO(5);
@@ -241,10 +238,10 @@ void saida() {
             if(token_atual.nome_token == RIGHT_PARENTHESIS) {
                 LE_TOKEN();
             } else {
-                ERRO(8);
+                ERRO(7);
             } 
         } else {
-            ERRO(8);
+            ERRO(7);
         }
     } else {
         ERRO(5);
@@ -262,10 +259,10 @@ void if_stmt() {
                 comando();
                 else_opt();
             } else {
-                ERRO(8);
+                ERRO(7);
             }
         } else {
-            ERRO(8);
+            ERRO(7);
         }
     } else {
         ERRO(5);
@@ -291,10 +288,10 @@ void while_stmt() {
                 LE_TOKEN();
                 comando();
             } else {
-                ERRO(8);
+                ERRO(7);
             } 
         } else {
-            ERRO(8);
+            ERRO(7);
         }
     } else {
         ERRO(5);
@@ -308,10 +305,10 @@ void bloco() {
         if(token_atual.nome_token == RIGHT_BRACKET) {
             LE_TOKEN();
         } else {
-            ERRO(9);
+            ERRO(8);
         }
     } else {
-        ERRO(9);
+        ERRO(8);
     }
 }  
 
@@ -358,7 +355,7 @@ void factor() {
         if(token_atual.nome_token == RIGHT_PARENTHESIS) {
             LE_TOKEN();
         } else {
-            ERRO(8);
+            ERRO(7);
         }
     } else if(token_atual.nome_token == OP_SUB) {
         LE_TOKEN();

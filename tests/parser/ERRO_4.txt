@@ -1,0 +1,4 @@
+inicio
+    double x;
+    x = 10;
+fim

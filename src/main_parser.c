@@ -6,7 +6,7 @@
 
 int main() {
     inicializar_lexer();
-    code = readFile("./tests/caso_valido.txt");
+    code = readFile("./tests/parser/caso_valido.txt");
     
     LE_TOKEN();
     

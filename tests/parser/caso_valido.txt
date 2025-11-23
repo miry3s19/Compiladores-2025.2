@@ -1,13 +1,17 @@
 inicio
+-- Comentário antes da declaração
     int variavel1;
     float variavel2;
     string variavel3;
     int local;  
     
-    variavel1 = 10;
+    variavel1 = 10; -- Comentário após código
     variavel2 = -5.5;
     variavel3 = "texto";
     local = 5;  
+
+--[[ Comentário 
+longo multi-linha ]]
     
     read(variavel1);
     print(variavel1 + 20);
@@ -29,5 +33,5 @@ inicio
         local = 10;           
         print(local);         
         variavel1 = local;    
-    }
+    } -- Comentário final
 fim
